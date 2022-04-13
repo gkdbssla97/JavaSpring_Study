@@ -2,8 +2,10 @@ package jpabook.jpashop.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.tomcat.jni.Address;
 
 import javax.persistence.*;
+import javax.persistence.criteria.Order;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,10 +13,10 @@ import java.util.List;
 @Getter @Setter
 public class Member {
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     @Column(name = "member_id")
     private Long id;
+
     private String name;
 
     @Embedded

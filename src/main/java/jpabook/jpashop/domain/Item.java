@@ -8,18 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+//@Inheritance(SingleTable)
+//@DiscriminatorColumn(discriminatorType = "DTYPE")
 @Getter @Setter
-public class Category {
+public abstract class Item {
 
     @Id @GeneratedValue
-    @Column(name = "category_id")
+    @Column(name = "item_id")
     private Long id;
 
     private String name;
+    private int price;
+    private int stockQuantity;
 
     @ManyToMany
-    private List<Item> items = new ArrayList<>();
-
-    private Category parent;
-    // private
+    private List<Category> categories = new ArrayList<>();
 }
