@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-//@Inheritance(SingleTable)
-//@DiscriminatorColumn(discriminatorType = "DTYPE")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)//**
+@DiscriminatorColumn(name = "DTYPE")
 @Getter @Setter
 public abstract class Item {
 
@@ -21,6 +21,8 @@ public abstract class Item {
     private int price;
     private int stockQuantity;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
+
+
 }

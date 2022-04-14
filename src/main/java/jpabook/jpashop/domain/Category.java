@@ -18,8 +18,16 @@ public class Category {
     private String name;
 
     @ManyToMany
+    @JoinTable(name = "category_item",
+            joinColumns = @JoinColumn(name ="category_id"),
+            inverseJoinColumns = @JoinColumn(name = "item_id"))
     private List<Item> items = new ArrayList<>();
 
+    //부모 자식 카테고리를 연결한다. ?
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
     private Category parent;
-    // private
+
+    @OneToMany(mappedBy = "parent")
+    private List<Category> child = new ArrayList<>();
 }
