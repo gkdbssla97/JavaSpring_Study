@@ -23,11 +23,19 @@ public class Category {
             inverseJoinColumns = @JoinColumn(name = "item_id"))
     private List<Item> items = new ArrayList<>();
 
-    //부모 자식 카테고리를 연결한다. ?
-    @ManyToOne
+    //부모 자식 카테고리를 연결한다.
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     private Category parent;
 
     @OneToMany(mappedBy = "parent")
     private List<Category> child = new ArrayList<>();
+
+    //==연관관계 메서드==//
+    public void addCategories(Category child) {
+        this.child.add(child);
+        child.setParent(this);
+    }
 }
+
+
