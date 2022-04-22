@@ -26,7 +26,6 @@ public abstract class Item {
     private List<Category> categories = new ArrayList<>();
 
     //==비즈니스 로직==//
-
     /**
      * 재고 증가
      * @param quantity
